@@ -279,6 +279,12 @@ def dashboard4():
                 title="Customer Distribution by CLTV"
             )
             fig1.update_traces(marker_line_color='black', marker_line_width=2)
+
+            fig1.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+                plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
+            )
+
             st.plotly_chart(fig1)
 
         # fig1 = px.histogram(data_frame=df, x = "CLTV",title = "CLTV Distribution")
@@ -298,8 +304,15 @@ def dashboard4():
             contract,
             x="CLTV",
             y="Contract",
+            # color = "Contract",
             title="Average CLTV by Contract"
         )
+
+        fig2.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+            plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
+        )
+        
         st.plotly_chart(fig2)
 
         # fig3 = px.scatter(data_frame=df, x = "Monthly Charge", y = "CLTV", color = "Monthly Charge",title = "Pricing VS Value")
@@ -318,6 +331,12 @@ def dashboard4():
                 color="Charge Category",
                 title = "Monthly Charge Category"
             )
+
+            fig3.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+                plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
+            )
+
             st.plotly_chart(fig3)
 
         # fig4 = px.scatter(data_frame=df, x = "Total Charges", y = "CLTV", color = "Monthly Charge",title = "Lifetime Relationship")
@@ -337,6 +356,12 @@ def dashboard4():
             box=True,
             title="CLTV by Total Charges"
         )
+
+        fig4.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+            plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
+        )
+        
         st.plotly_chart(fig4)
 
         # fig5 = px.box(data_frame=df, x = "Internet Type", y = "Total Revenue", color = "Internet Type",title = "Revenue By Internet Type")
@@ -354,6 +379,12 @@ def dashboard4():
             values="Total Revenue",
             title="Revenue by Internet Type"
         )
+
+        fig5.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+            plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
+        )
+
         st.plotly_chart(fig5)
 
         # fig6 = px.violin(data_frame=df, x = "Payment Method", y = "Total Revenue", color = "Payment Method", box = True, title = "Revenue Distribution")
@@ -372,6 +403,12 @@ def dashboard4():
             hole=0.5,
             title="Revenue Share by Payment Method"
         )
+
+        fig6.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+            plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
+        )
+        
         st.plotly_chart(fig6)
 
         # fig7 = px.treemap()
@@ -395,4 +432,10 @@ def dashboard4():
         )
 
         fig8.update_layout(width = 400, height = 600)
+
+        fig8.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+            plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
+        )
+        
         st.plotly_chart(fig8, use_container_width=True)

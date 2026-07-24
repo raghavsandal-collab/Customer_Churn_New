@@ -122,7 +122,54 @@ st.markdown("""
                 border-radius: 10px;
                 border: 1px solid #ddd;
             }
+
+            div[data-testid="stMetric"]{
+            background: linear-gradient(145deg,#162447,#1d3557);
+            border:1px solid #3B82F6;
+            border-radius:18px;
+            padding:18px;
+            transition:.35s;
+            cursor:pointer;
+            }
+
+            div[data-testid="stMetric"]:hover{
+            transform:translateY(-8px) scale(1.02);
+            box-shadow:0 18px 35px rgba(59,130,246,.45);
+            border:1px solid #60A5FA;
+            }
             
+            # /* Metric Card */
+            # div[data-testid="stMetric"]{
+            #     background: #131e36;
+            #     border: 2px solid #2563EB;
+            #     border-radius: 15px;
+            #     padding: 18px;
+            #     box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            #     transition: all 0.3s ease;
+            # }
+
+            # /* Hover */
+            # div[data-testid="stMetric"]:hover{
+            #     transform: translateY(-6px);
+            #     border-color: #60A5FA;
+            #     box-shadow: 0 12px 25px rgba(37,99,235,0.45);
+            # }
+
+            # /* Metric Label */
+            # div[data-testid="stMetricLabel"]{
+            #     color: white !important;
+            #     font-weight: 600;
+            #     text-align: center;
+            # }
+
+            # /* Metric Value */
+            # div[data-testid="stMetricValue"]{
+            #     color: white !important;
+            #     font-size: 28px;
+            #     font-weight: bold;
+            #     text-align: center;
+            # }
+
             # --------------------------------------------------------------
                         /* ===========================
             TEXT COLOR - WHITE
@@ -680,13 +727,16 @@ if opt == "Overview":
                 plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
             )
             st.plotly_chart(figure)
+            st.info("🎯insights: This visual shows total revenue.")
             contract_wise_customer = df.groupby("Contract")["Customer ID"].count().reset_index()
-            figure1 = px.pie(data_frame=contract_wise_customer, names = "Contract", values= "Customer ID"  , hole= 0.5)
+            figure1 = px.pie(data_frame=contract_wise_customer, names = "Contract", values= "Customer ID"  , hole= 0.5, title = "Customer ID as per Contract")
             figure1.update_layout(
                 paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
                 plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
             )
             st.plotly_chart(figure1)
+            st.info("🎯insights: This visual shows Customer ID as per Contract.")
+
 
         total_Customer = df.groupby("Gender")["Customer ID"].count().reset_index()
         figure2 = px.pie(data_frame= total_Customer , names = "Gender" , values = "Customer ID" , color= "Gender", hole = 0.5, title = "Customer ID as per Gender")
@@ -705,6 +755,7 @@ if opt == "Overview":
                 plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
             )
             st.plotly_chart(figure3)
+            st.info("🎯insights: This visual shows top 10 countries as per total revenue.")
 
             figure4 = px.pie(data_frame=df, names = "Offer", title = "Types of Offers")
             # figure4.update_layout(width = 400, height = 600)
@@ -713,13 +764,17 @@ if opt == "Overview":
                 plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
             )
             st.plotly_chart(figure4, use_container_width=True)
+            st.info("🎯insights: This visual shows types of offers.")
+
 
     with tab2:
         c1,c2 = st.columns(2)
         with c1:
-            st.metric("📝Total Rows",df.shape[0])
+            # st.metric("📝Total Rows",df.shape[0])
+            st.metric("📝Total Rows",7043)
         with c2:
-            st.metric("🗒️Total Columns",df.shape[1])  
+            # st.metric("🗒️Total Columns",df.shape[1])  
+            st.metric("🗒️Total Columns",46)  
         c3,c4 = st.columns(2)
         with c3:
             # st.metric("❌Missing Values",0)

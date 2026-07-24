@@ -229,17 +229,13 @@ def dashboard3():
         with c1:
             total_count = df["Customer Status"].count()
             df1 = df[df["Customer Status"] == "Churned"]
-            # st.dataframe(df1.count())
+
             churn_count = len(df[df["Customer Status"] == "Churned"])
             div_churn = (churn_count / total_count) * 100
-            # st.write(total_count)
-            # st.write(churn_count)
-            # st.write(div_churn)
-            st.metric("Churn Rate",round(div_churn,2))
-            # st.metric("Churn Rate",df["Customer Status"].div_churn())
-            # st.metric("Churn Rate",f"{div_churn:.2f}%")
+            # st.metric("Churn Rate",round(div_churn,2))
+            st.metric("Churn Rate",round(div_churn,2),"%")
+
         with c2:
-            # st.metric("Average Churn Score",df["Churn Score"].mean())
             st.metric("Average Churn Score",df["Churn Score"].median())
         with c3:
             st.metric("Average CLTV", round(df["CLTV"].mean(),2))
@@ -285,6 +281,10 @@ def dashboard3():
                 title="Contract Wise Churn"
             )
 
+            fig1.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+                plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
+            )
             st.plotly_chart(fig1)
 
             score = (
@@ -301,6 +301,10 @@ def dashboard3():
                 title="Customer Count by Churn Score Category"
             )
 
+            fig2.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+                plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
+            )
 
             st.plotly_chart(fig2, use_container_width=True)
 
@@ -314,6 +318,11 @@ def dashboard3():
                 color="Tenure Category",
                 box=True,
                 title="Monthly Charge by Tenure Category"
+            )
+
+            fig3.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+                plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
             )
 
             st.plotly_chart(fig3)
@@ -330,6 +339,11 @@ def dashboard3():
                 values="Customer ID",
                 hole=0.5,
                 title="Customer Distribution by CLTV Category"
+            )
+
+            fig5.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+                plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
             )
 
             st.plotly_chart(fig5)
@@ -353,14 +367,31 @@ def dashboard3():
                 title="Customer Satisfaction Categories"
             )
 
+            fig6.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+                plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
+            )
+
             st.plotly_chart(fig6)
 
             # fig7 = px.area(data_frame=df, x = "Churn Category", color = "Churn Category",title = "Top Churn Categories")
             fig7 = px.pie(data_frame=df, names = "Churn Category", values = "CLTV",title = "Top Churn Categories")
+
+            fig7.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+                plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
+            )
+
             st.plotly_chart(fig7)
         with c4:
             fig8 = px.treemap(data_frame=df, path = ["Churn Reason"], values = "CLTV",color = "Churn Reason",title = "Top Churn Reasons")
             # fig8.update_layout(width = 900 , height = 700)
+
+            fig8.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",   # Outside the plot
+                plot_bgcolor="rgba(0,0,0,0)"     # Inside the plot
+            )
+
             st.plotly_chart(fig8)
 
         # contract as per cltv in bar or column instead of c put value in y

@@ -220,15 +220,18 @@ def dashboard2():
 
         avg_age = df["Age"]
         with c1:
-            st.metric("Average Age", round(df["Age"].mean(), 2))
-            # st.metric("Average Age",df["Age"].mean())
-            # round(df["Age"].mean(),2)
+            # st.metric("Average Age", round(df["Age"].mean(), 2))
+            st.metric("Average Age", round(df["Age"].mean(), 2),"Years")
+
         with c2:
-            st.metric("Average Tenure",round(df["Tenure in Months"].mean(),2))
+            # st.metric("Average Tenure",round(df["Tenure in Months"].mean(),2))
+            st.metric("Average Tenure",round(df["Tenure in Months"].mean(),2),"Months")
         with c3:
-            st.metric("Average Downloads",round(df["Avg Monthly GB Download"].mean(),2))
+            # st.metric("Average Downloads",round(df["Avg Monthly GB Download"].mean(),2))
+            st.metric("Average Downloads",round(df["Avg Monthly GB Download"].mean(),2),"GB")
         with c4:
-            st.metric("Average Long Distance Charges",round(df["Avg Monthly Long Distance Charges"].mean(),2))
+            # st.metric("Average Long Distance Charges",round(df["Avg Monthly Long Distance Charges"].mean(),2))
+            st.metric("Average Long Distance Charges",round(df["Avg Monthly Long Distance Charges"].mean(),2),"Dollar")
 
         df["Age Group"] = pd.cut(
             df["Age"],
