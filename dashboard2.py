@@ -209,12 +209,19 @@ def dashboard2():
             options=df["Internet Type"].unique(),
             default=df["Internet Type"].unique()[:3]
         )
-        st.sidebar.success("Contract")
-        st.sidebar.success("Payment Method")
-        st.sidebar.success("Phone Service")
+        # st.sidebar.success("Contract")
+        # st.sidebar.success("Payment Method")
+        # st.sidebar.success("Phone Service")
 
+        st.sidebar.header("📱Phone Service Filter")
 
-        st.sidebar.header("Payment Filter")
+        phone = st.sidebar.multiselect(
+            "Phone Service Select",
+            options=df["Phone Service"].unique(),
+            default=df["Phone Service"].unique()[:2]
+        )
+
+        st.sidebar.header("💵Payment Filter")
 
         payment = st.sidebar.multiselect(
             "Payment Method",
@@ -222,7 +229,7 @@ def dashboard2():
             default=df["Payment Method"].unique()[:2]
         )
 
-        st.sidebar.header("contract Filter")
+        st.sidebar.header("📝Contract Filter")
 
         contract = st.sidebar.multiselect(
             "Contract Select",
@@ -246,7 +253,8 @@ def dashboard2():
         df = df[
             (df["City"].isin(churn)) &
             (df["Payment Method"].isin(payment)) &
-            (df["Contract"].isin(contract))
+            (df["Contract"].isin(contract)) &
+            (df["Phone Service"].isin(phone))
         ]
         c1 , c2 , c3 , c4 = st.columns(4)
 
