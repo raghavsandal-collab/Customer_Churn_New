@@ -196,7 +196,16 @@ def dashboard2():
         # st.title("🙎‍♂️Customer Demographics & Services")
         # st.write("🙎‍♂️Customer Demographics & Services")
 
-        st.sidebar.success("Internet Type")
+        # st.sidebar.success("Internet Type")
+        # st.sidebar.success("Contract")
+        # st.sidebar.success("Payment Method")
+        # st.sidebar.success("Phone Service")
+
+        internet = st.sidebar.multiselect(
+            "Internet Type",
+            options=df["Internet Type"].unique(),
+            default=df["Internet Type"].unique()[:3]
+        )
         st.sidebar.success("Contract")
         st.sidebar.success("Payment Method")
         st.sidebar.success("Phone Service")
