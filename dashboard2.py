@@ -323,14 +323,14 @@ def dashboard2():
             )
             st.plotly_chart(fig2)
         
-        payment = (
+        payment_data = (
             df.groupby(["Payment Method", "Revenue Category"])
             .size()
             .reset_index(name="Customers")
         )
 
         fig5 = px.bar(
-            payment,
+            payment_data,
             x="Payment Method",
             y="Customers",
             color="Revenue Category",
