@@ -203,7 +203,8 @@ def dashboard4():
         # st.sidebar.success("Contract")
         # st.sidebar.success("Internet Type")
         # st.sidebar.success("Payment Method")
-        st.sidebar.success("Customer Status")
+
+        # st.sidebar.success("Customer Status")
 
         st.sidebar.header("📝Contract")
 
