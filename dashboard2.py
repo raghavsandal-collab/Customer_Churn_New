@@ -216,7 +216,7 @@ def dashboard2():
 
         st.sidebar.header("Payment Filter")
 
-        payment_select = st.sidebar.multiselect(
+        payment = st.sidebar.multiselect(
             "Payment Method",
             options=df["Payment Method"].unique(),
             default=df["Payment Method"].unique()[:2]
@@ -230,9 +230,14 @@ def dashboard2():
             default=df["City"].unique()[:3]
         )
 
-        df = df[(df["City"].isin(churn)) 
-        # (df["visuals"].isin(visuals)) &
-        # df(["insight"].isin())
+        # df = df[(df["City"].isin(churn)) 
+        
+        # # (df["visuals"].isin(visuals)) &
+        # # df(["insight"].isin())
+        # ]
+        df = df[
+            (df["City"].isin(churn)) &
+            (df["Payment Method"].isin(payment))
         ]
         c1 , c2 , c3 , c4 = st.columns(4)
 
