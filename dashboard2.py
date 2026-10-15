@@ -246,7 +246,7 @@ def dashboard2():
         df = df[
             (df["City"].isin(churn)) &
             (df["Payment Method"].isin(payment)) &
-            (df["Contract Select"].isin(contract))
+            (df["Contract"].isin(contract))
         ]
         c1 , c2 , c3 , c4 = st.columns(4)
 
