@@ -199,6 +199,16 @@ def dashboard3():
         # st.sidebar.success("Contract")
         # st.sidebar.success("Internet Type")
 
+        st.sidebar.header("📝Contract Status")
+
+        contract_1 = st.sidebar.multiselect(
+            "Select Contract",
+            options=df["Contract"].unique(),
+            default=df["Contract"].unique()[:2]
+        )
+
+        df = df[(df["Contract"].isin(contract_1))]
+
         st.sidebar.header("🔍Churn Filter")
 
         churn = st.sidebar.multiselect(
