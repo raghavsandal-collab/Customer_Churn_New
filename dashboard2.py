@@ -214,6 +214,13 @@ def dashboard2():
         st.sidebar.success("Phone Service")
 
 
+        st.sidebar.header("Payment Filter")
+
+        payment = st.sidebar.multiselect(
+            "Payment Method",
+            options=df["Payment Method"].unique(),
+            default=df["Payment Method"].unique()[:2]
+        )
 
         st.sidebar.header("🔍Churn Filter")
 
