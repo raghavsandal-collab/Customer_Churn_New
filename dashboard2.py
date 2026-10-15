@@ -200,6 +200,9 @@ def dashboard2():
         # st.sidebar.success("Contract")
         # st.sidebar.success("Payment Method")
         # st.sidebar.success("Phone Service")
+        df = pd.read_csv("cleaned.csv")
+
+        st.sidebar.header("Internet Filter")
 
         internet = st.sidebar.multiselect(
             "Internet Type",
@@ -211,7 +214,6 @@ def dashboard2():
         st.sidebar.success("Phone Service")
 
 
-        df = pd.read_csv("cleaned.csv")
 
         st.sidebar.header("🔍Churn Filter")
 
