@@ -216,7 +216,7 @@ def dashboard2():
 
         st.sidebar.header("Payment Filter")
 
-        payment = st.sidebar.multiselect(
+        payment_select = st.sidebar.multiselect(
             "Payment Method",
             options=df["Payment Method"].unique(),
             default=df["Payment Method"].unique()[:2]
