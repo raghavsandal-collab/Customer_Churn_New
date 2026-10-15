@@ -222,6 +222,14 @@ def dashboard2():
             default=df["Payment Method"].unique()[:2]
         )
 
+        st.sidebar.header("contract Filter")
+
+        contract = st.sidebar.multiselect(
+            "Contract Select",
+            options=df["Contract"].unique(),
+            default=df["Contract"].unique()[:2]
+        )
+
         st.sidebar.header("🔍Churn Filter")
 
         churn = st.sidebar.multiselect(
@@ -237,7 +245,8 @@ def dashboard2():
         # ]
         df = df[
             (df["City"].isin(churn)) &
-            (df["Payment Method"].isin(payment))
+            (df["Payment Method"].isin(payment)) &
+            (df["Contract Select"].isin(contract))
         ]
         c1 , c2 , c3 , c4 = st.columns(4)
 
